@@ -6,6 +6,7 @@ import subprocess
 import tempfile
 
 # In case the intercepting fails
+# In theory this will terminate
 backup_sort = b"""
 local
   open Random
@@ -24,7 +25,7 @@ in
           L' := Real.toString (List.nth (!L, i)) :: !L' ;
           L := let val found = ref false in List.filter (fn x => if not (!found) andalso Real.toString x = List.hd (!L') then (found := true; false) else true) (!L) end
         end;
-      if !L' = ListMergeSort.sort (fn (x, y) => String.compare (x, y) = GREATER) (!L') then !L' else sort xs
+      if !L' = ListMergeSort.sort (fn (x, y) => Real.compare (Option.valOf (Real.fromString x), Option.valOf (Real.fromString y)) = GREATER) (!L') then !L' else sort xs
     end
 end
 """
