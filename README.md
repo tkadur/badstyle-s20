@@ -1,6 +1,6 @@
 Everyone knows that functional languages are really slow. For efficiency, we implement sort using C++.
 
-# Running the code
+## Running the code
 
 ```
 $ make
@@ -9,7 +9,7 @@ $ sml sort.sml
 
 This has only been tested on Andrew.
 
-# Explanation
+## Explanation
 
 1. `sort.sml` immediately `exec`s `sml.py`, which
 2. pretends to be SML/NJ (by running it in a subprocess), checking the input for calls to `sort`. If one is recognized, it
