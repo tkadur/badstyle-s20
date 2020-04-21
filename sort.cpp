@@ -21,7 +21,8 @@ char **sort(char *c_arg, int *len) {
   copy(istream_iterator<string>(iss), istream_iterator<string>(),
        back_inserter(args));
 
-  sort(args.begin(), args.end());
+  sort(args.begin(), args.end(),
+       [](string x, string y) { return stof(x) < stof(y); });
 
   auto c_args = vector<char *>();
   for (auto &arg : args) {
